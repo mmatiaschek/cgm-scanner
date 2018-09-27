@@ -70,6 +70,8 @@ public class AppConstants {
     public static final String CONFIG_ADMINS = "admins";
     public static final String CONFIG_ALLOW_EDIT = "allow_edit";
     public static final String CONFIG_ALLOW_DELETE = "allow_delete";
+    public static final String CONFIG_SYNC_PERIOD = "sync_period";
+    public static final String CONFIG_SYNC_NETWORK = "sync_network";
 
     public static final String AUTHTOKEN_TYPE = "de.welthungerhilfe.cgm.scanner";
     public static final String ACCOUNT_TYPE = "de.welthungerhilfe.cgm.scanner";

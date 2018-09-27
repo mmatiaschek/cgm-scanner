@@ -165,125 +165,119 @@
                     android:textSize="20sp"
                     android:textColor="@color/colorPrimary"/>
 
-                <RadioGroup
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/activity_group_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    app:mrl_rippleOverlay="true">
 
-                    <com.balysv.materialripple.MaterialRippleLayout
+                    <LinearLayout
+                        android:id="@+id/lytLangEnglish"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginTop="@dimen/activity_group_margin"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
-                        android:paddingRight="@dimen/activity_horizontal_margin"
-                        app:mrl_rippleOverlay="true">
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/lytLangEnglish"
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/usa"
+                            android:contentDescription="@string/content_image"/>
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:textSize="18sp"
+                            android:text="@string/lang_english"
+                            android:textColor="@color/colorBlack"/>
 
-                            <ImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:src="@drawable/usa"
-                                android:contentDescription="@string/content_image"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radioEnglish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:textSize="18sp"
-                                android:text="@string/lang_english"
-                                android:textColor="@color/colorBlack"/>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
-                            <android.support.v7.widget.AppCompatRadioButton
-                                android:id="@+id/radioEnglish"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/activity_group_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    app:mrl_rippleOverlay="true">
 
-                    </com.balysv.materialripple.MaterialRippleLayout>
-
-                    <com.balysv.materialripple.MaterialRippleLayout
+                    <LinearLayout
+                        android:id="@+id/lytLangGerman"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginTop="@dimen/activity_group_margin"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
-                        android:paddingRight="@dimen/activity_horizontal_margin"
-                        app:mrl_rippleOverlay="true">
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/lytLangGerman"
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/germany"
+                            android:contentDescription="@string/content_image"/>
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:textSize="18sp"
+                            android:text="@string/lang_german"
+                            android:textColor="@color/colorBlack"/>
 
-                            <ImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:src="@drawable/germany"
-                                android:contentDescription="@string/content_image"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radioGerman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:textSize="18sp"
-                                android:text="@string/lang_german"
-                                android:textColor="@color/colorBlack"/>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
-                            <android.support.v7.widget.AppCompatRadioButton
-                                android:id="@+id/radioGerman"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/activity_group_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    app:mrl_rippleOverlay="true">
 
-                    </com.balysv.materialripple.MaterialRippleLayout>
-
-                    <com.balysv.materialripple.MaterialRippleLayout
+                    <LinearLayout
+                        android:id="@+id/lytLangHindi"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginTop="@dimen/activity_group_margin"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
-                        android:paddingRight="@dimen/activity_horizontal_margin"
-                        app:mrl_rippleOverlay="true">
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/lytLangHindi"
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:src="@drawable/india"
+                            android:contentDescription="@string/content_image"/>
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                            android:textSize="18sp"
+                            android:text="@string/lang_hindi"
+                            android:textColor="@color/colorBlack"/>
 
-                            <ImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:src="@drawable/india"
-                                android:contentDescription="@string/content_image"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radioHindi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:textSize="18sp"
-                                android:text="@string/lang_hindi"
-                                android:textColor="@color/colorBlack"/>
-
-                            <android.support.v7.widget.AppCompatRadioButton
-                                android:id="@+id/radioHindi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-
-                    </com.balysv.materialripple.MaterialRippleLayout>
-
-                </RadioGroup>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
 
@@ -332,73 +326,67 @@
 
                 </com.balysv.materialripple.MaterialRippleLayout>
 
-                <RadioGroup
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/activity_group_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    app:mrl_rippleOverlay="true">
 
-                    <com.balysv.materialripple.MaterialRippleLayout
+                    <LinearLayout
+                        android:id="@+id/lytSyncNetwork"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginTop="@dimen/activity_group_margin"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
-                        android:paddingRight="@dimen/activity_horizontal_margin"
-                        app:mrl_rippleOverlay="true">
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/lytSyncNetwork"
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="18sp"
+                            android:text="@string/sync_network"
+                            android:textColor="@color/colorBlack"/>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textSize="18sp"
-                                android:text="@string/sync_network"
-                                android:textColor="@color/colorBlack"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radioSyncNetwork"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                            <android.support.v7.widget.AppCompatRadioButton
-                                android:id="@+id/radioSyncNetwork"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
-                    </com.balysv.materialripple.MaterialRippleLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/activity_group_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    app:mrl_rippleOverlay="true">
 
-                    <com.balysv.materialripple.MaterialRippleLayout
+                    <LinearLayout
+                        android:id="@+id/lytSyncWifi"
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginTop="@dimen/activity_group_margin"
-                        android:paddingLeft="@dimen/activity_horizontal_margin"
-                        android:paddingRight="@dimen/activity_horizontal_margin"
-                        app:mrl_rippleOverlay="true">
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:id="@+id/lytSyncWifi"
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="18sp"
+                            android:text="@string/sync_wifi"
+                            android:textColor="@color/colorBlack"/>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textSize="18sp"
-                                android:text="@string/sync_wifi"
-                                android:textColor="@color/colorBlack"/>
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/radioSyncWifi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
-                            <android.support.v7.widget.AppCompatRadioButton
-                                android:id="@+id/radioSyncWifi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
-
-                    </com.balysv.materialripple.MaterialRippleLayout>
-
-                </RadioGroup>
+                </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
 

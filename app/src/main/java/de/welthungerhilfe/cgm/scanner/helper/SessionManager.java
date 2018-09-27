@@ -39,6 +39,8 @@ public class SessionManager {
     private final String KEY_SYNC_TIMESTAMP = "sync_timestamp";
     private final String KEY_LANGUAGE = "key_language";
     private final String KEY_CONNECTION_TIMESTAMP = "key_connection_timestamp";
+    private final String KEY_SYNC_PERIOD = "key_sync_period";
+    private final String KEY_SYNC_NETWORK = "key_sync_network";
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -105,5 +107,25 @@ public class SessionManager {
 
     public long getConnectionTimestamp() {
         return pref.getLong(KEY_CONNECTION_TIMESTAMP, 0);
+    }
+
+    public void setSyncPeriod(long period) {
+        editor.putLong(KEY_SYNC_PERIOD, period);
+
+        editor.commit();
+    }
+
+    public long getSyncPeriod() {
+        return pref.getLong(KEY_SYNC_PERIOD, 0);
+    }
+
+    public void setSyncNetwork(long network) {
+        editor.putLong(KEY_SYNC_NETWORK, network);
+
+        editor.commit();
+    }
+
+    public long getSyncNetwork() {
+        return pref.getLong(KEY_SYNC_NETWORK, -1);
     }
 }

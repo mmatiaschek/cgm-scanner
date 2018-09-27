@@ -42,6 +42,7 @@ import de.welthungerhilfe.cgm.scanner.helper.AppConstants;
 import de.welthungerhilfe.cgm.scanner.helper.DbConstants;
 import de.welthungerhilfe.cgm.scanner.helper.LanguageHelper;
 import de.welthungerhilfe.cgm.scanner.helper.OfflineDatabase;
+import de.welthungerhilfe.cgm.scanner.helper.SessionManager;
 import de.welthungerhilfe.cgm.scanner.utils.Utils;
 import io.fabric.sdk.android.Fabric;
 
@@ -161,7 +162,7 @@ public class AppController extends Application {
 
 
         //Log.e("Offline DB", DebugDB.getAddressLog());
-
+        loadSyncSettings();
         mInstance = this;
     }
 
@@ -184,6 +185,27 @@ public class AppController extends Application {
         }
 
         return isAdmin;
+    }
+
+    public void loadSyncSettings() {
+        SessionManager session = new SessionManager(this);
+        if (session.getSyncNetwork() == -1 || session.getSyncPeriod() == 0) {
+            long cacheExpiration = 3600 * 3;
+            if (firebaseConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
+                cacheExpiration = 0;
+            }
+
+            firebaseConfig.fetch(cacheExpiration)
+                    .addOnSuccessListener(aVoid -> {
+                        firebaseConfig.activateFetched();
+
+                        session.setSyncNetwork(firebaseConfig.getLong(AppConstants.CONFIG_SYNC_NETWORK));
+                        session.setSyncPeriod(firebaseConfig.getLong(AppConstants.CONFIG_SYNC_PERIOD));
+                    })
+                    .addOnFailureListener(e -> {
+                        e.printStackTrace();
+                    });
+        }
     }
 
     public static synchronized AppController getInstance() {

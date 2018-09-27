@@ -64,6 +64,18 @@ public class SettingsActivity extends BaseActivity {
         changeLanguage("hi");
     }
 
+    @OnClick(R.id.lytSyncNetwork)
+    void onNetwork(LinearLayout lytSyncNetwork) {
+        radioSyncNetwork.setChecked(true);
+        radioSyncWifi.setChecked(false);
+    }
+
+    @OnClick(R.id.lytSyncWifi)
+    void onWifi(LinearLayout lytSyncWifi) {
+        radioSyncWifi.setChecked(true);
+        radioSyncNetwork.setChecked(false);
+    }
+
     private SessionManager session;
 
     protected void onCreate(Bundle saveBundle) {
@@ -114,7 +126,11 @@ public class SettingsActivity extends BaseActivity {
             radioHindi.setChecked(true);
         }
 
-        txtSyncInterval.setText(getString(R.string.sync_period, 5));
+        txtSyncInterval.setText(getString(R.string.sync_period, session.getSyncPeriod()));
+        if (session.getSyncNetwork() == 0)
+            radioSyncNetwork.setChecked(true);
+        else if (session.getSyncNetwork() == 1)
+            radioSyncWifi.setChecked(true);
     }
 
     private void changeLanguage(String code) {
