@@ -2,11 +2,13 @@ package de.welthungerhilfe.cgm.scanner.activities;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import butterknife.OnClick;
 import de.welthungerhilfe.cgm.scanner.R;
 import de.welthungerhilfe.cgm.scanner.helper.AppConstants;
 import de.welthungerhilfe.cgm.scanner.helper.SessionManager;
+import de.welthungerhilfe.cgm.scanner.syncdata.SyncAdapter;
 import de.welthungerhilfe.cgm.scanner.utils.Utils;
 
 public class SettingsActivity extends BaseActivity {
@@ -64,16 +67,59 @@ public class SettingsActivity extends BaseActivity {
         changeLanguage("hi");
     }
 
+    @OnClick(R.id.lytSyncInterval)
+    void onSyncInterval(LinearLayout lytSyncInterval) {
+        AccountManager manager = AccountManager.get(this);
+        Account[] accounts = manager.getAccounts();
+        if (accounts.length > 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.title_sync_interval);
+            builder.setSingleChoiceItems(R.array.sync_intervals, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    int interval = 0;
+                    switch (which) {
+                        case 0:
+                            interval = 5;
+                            break;
+                        case 1:
+                            interval = 30;
+                            break;
+                        case 2:
+                            interval = 60;
+                            break;
+                        case 3:
+                            interval = 60 * 24;
+                            break;
+                        case 4:
+                            interval = 1;
+                            break;
+                    }
+
+                    session.setSyncPeriod(interval);
+                    SyncAdapter.changeSyncInterval(accounts[0], SettingsActivity.this);
+                    txtSyncInterval.setText(getString(R.string.sync_period, interval));
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+        }
+    }
+
     @OnClick(R.id.lytSyncNetwork)
     void onNetwork(LinearLayout lytSyncNetwork) {
         radioSyncNetwork.setChecked(true);
         radioSyncWifi.setChecked(false);
+
+        session.setSyncNetwork(0);
     }
 
     @OnClick(R.id.lytSyncWifi)
     void onWifi(LinearLayout lytSyncWifi) {
         radioSyncWifi.setChecked(true);
         radioSyncNetwork.setChecked(false);
+
+        session.setSyncNetwork(1);
     }
 
     private SessionManager session;

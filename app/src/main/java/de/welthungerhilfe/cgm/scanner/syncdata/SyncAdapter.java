@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.bumptech.glide.util.Util;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +33,8 @@ import de.welthungerhilfe.cgm.scanner.utils.Utils;
 
 import static de.welthungerhilfe.cgm.scanner.helper.AppConstants.SYNC_FLEXTIME;
 import static de.welthungerhilfe.cgm.scanner.helper.AppConstants.SYNC_INTERVAL;
+import static de.welthungerhilfe.cgm.scanner.utils.Utils.NETWORK_NONE;
+import static de.welthungerhilfe.cgm.scanner.utils.Utils.NETWORK_WIFI;
 
 public class SyncAdapter extends AbstractThreadedSyncAdapter implements OfflineTask.OnLoadPerson, OfflineTask.OnLoadMeasure {
     private long prevTimestamp;
@@ -52,8 +53,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements OfflineT
     @AddTrace(name = "onPerformSync", enabled = true)
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
         /* Check Network Status && Sync when only wifi on */
+        long network = session.getSyncNetwork();
         int netStatus = Utils.checkNetwork(getContext());
-        if (netStatus == Utils.NETWORK_NONE || netStatus == Utils.NETWORK_MOBILE)
+        if (network == 0 && netStatus == NETWORK_NONE)
+            return;
+        if (network == 1 && netStatus != NETWORK_WIFI)
             return;
 
         prevTimestamp = session.getSyncTimestamp();
@@ -146,16 +150,18 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements OfflineT
     private static void configurePeriodicSync(Account account, Context context) {
 
         String authority = context.getString(R.string.sync_authority);
+        SessionManager session = new SessionManager(context);
+        long interval = session.getSyncPeriod() * 60;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SyncRequest request = new SyncRequest.Builder().
-                    syncPeriodic(SYNC_INTERVAL, SYNC_FLEXTIME).
+                    syncPeriodic(interval, interval / 3).
                     setSyncAdapter(account, authority).
                     setExtras(new Bundle()).build();
 
             ContentResolver.requestSync(request);
         } else {
-            ContentResolver.addPeriodicSync(account, authority, new Bundle(), SYNC_INTERVAL);
+            ContentResolver.addPeriodicSync(account, authority, new Bundle(), interval);
         }
     }
 
@@ -182,7 +188,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter implements OfflineT
     public static void changeSyncInterval(Account account, Context context) {
         String authority = context.getString(R.string.sync_authority);
 
-        ContentResolver.removePeriodicSync(account, authority, null);
+        ContentResolver.removePeriodicSync(account, authority, new Bundle());
         startPeriodicSync(account, context);
     }
 

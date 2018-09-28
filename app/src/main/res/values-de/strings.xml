@@ -148,6 +148,7 @@
     <string name="title_image_view">Image View</string>
     <string name="title_settings">Einstellungen</string>
     <string name="title_add_measure">Messung hinzufügen</string>
+    <string name="title_sync_interval">Select Sync Interval</string>
 
     <string name="content_image">Einverständniserklärung</string>
 
@@ -185,4 +186,17 @@
     <string name="exception_tango_invalid">"Tango invalid exception! Try again!"</string>
     <string name="exception_out_of_date">"Please update Tango Core App!"</string>
 
+    <string name="sync_interval_1">5 minutes</string>
+    <string name="sync_interval_2">30 minutes</string>
+    <string name="sync_interval_3">1 hour</string>
+    <string name="sync_interval_4">1 day</string>
+    <string name="sync_interval_test">1 minute</string>
+
+    <string-array name="sync_intervals">
+        <item>@string/sync_interval_1</item>
+        <item>@string/sync_interval_2</item>
+        <item>@string/sync_interval_3</item>
+        <item>@string/sync_interval_4</item>
+        <item>@string/sync_interval_test</item>
+    </string-array>
 </resources>
