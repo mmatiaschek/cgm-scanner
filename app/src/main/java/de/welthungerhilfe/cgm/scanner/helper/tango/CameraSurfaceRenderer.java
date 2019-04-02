@@ -19,8 +19,6 @@ package de.welthungerhilfe.cgm.scanner.helper.tango;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import com.projecttango.tangosupport.TangoSupport;
-
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
@@ -164,11 +162,6 @@ public class CameraSurfaceRenderer implements GLSurfaceView.Renderer {
     }
 
 
-    public void updateColorCameraTextureUv(int rotation){
-        float[] textureCoords =
-                TangoSupport.getVideoOverlayUVBasedOnDisplayRotation(textureCoords0, rotation);
-        setTextureCoords(textureCoords);
-    }
 
     private void setTextureCoords(float[] textureCoords) {
         mTexCoord.put(textureCoords);

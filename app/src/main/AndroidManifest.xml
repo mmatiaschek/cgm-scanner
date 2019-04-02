@@ -64,9 +64,6 @@
         android:windowSoftInputMode="adjustResize"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:allowBackup">
-		<uses-library
-            android:name="com.projecttango.libtango_device2"
-            android:required="true" />
 
         <meta-data
             android:name="com.google.android.gms.version"
