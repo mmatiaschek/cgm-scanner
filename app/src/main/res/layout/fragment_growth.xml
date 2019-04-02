@@ -24,6 +24,42 @@
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/colorTraffic">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/traffic"
+            android:tint="@color/colorWhite"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_group_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtReportTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Follow-up Examination"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/txtReportContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact a local doctor or health officer"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
     <com.jaredrummler.materialspinner.MaterialSpinner
         android:id="@+id/dropChart"
         android:layout_width="match_parent"
